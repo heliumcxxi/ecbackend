@@ -171,7 +171,7 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
 
   const checkOut = () => {
-    fetch(`${process.env.CLIENT_URL}/checkout` {
+    fetch(`${process.env.CLIENT_URL}/checkout`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
