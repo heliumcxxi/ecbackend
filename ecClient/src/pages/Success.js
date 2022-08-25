@@ -12,7 +12,7 @@ const Container = styled.h1`
 const Success = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      window.location.replace("http://localhost:3000/");
+      window.location.replace(process.env.CLIENT_URL);
     }, 3000);
     return () => clearTimeout(timer);
   }, []);

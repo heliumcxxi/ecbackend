@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
       line_items: allProducts,
       mode: "payment",
       success_url: `${process.env.CLIENT_URL}/success`,
-      cancel_url: "http://localhost:3000/",
+      cancel_url: process.env.CLIENT_URL,
     });
 
     res.json({ url: session.url });
