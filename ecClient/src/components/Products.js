@@ -20,8 +20,8 @@ const Products = ({ cat, filters, sort }) => {
       try {
         const res = await axios.get(
           cat
-            ? ` ${process.env.CLIENT_URL}/api/products?category=${cat}`
-            : `${process.env.CLIENT_URL}/api/products`
+            ? ` ${process.env.REACT_APP_CLIENT_URL}/api/products?category=${cat}`
+            : `${process.env.REACT_APP_CLIENT_URL}/api/products`
         );
         setProducts(res.data);
       } catch (err) {}
@@ -29,6 +29,7 @@ const Products = ({ cat, filters, sort }) => {
     getProducts();
   }, [cat]);
 
+  console.log(process.env.REACT_APP_CLIENT_URL);
   useEffect(() => {
     cat &&
       setFilteredProducts(
