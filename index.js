@@ -16,7 +16,11 @@ dotenv.config();
 
 mongoose
   .connect(process.env.MONGO_URL)
-  .then(() => console.log("DBConnection Successful"))
+  .then(() => console.log("DBConnection Successful"){
+    app.listen(process.env.PORT || 4000, () => {
+      console.log("backend server is running");
+    })
+  })
   .catch((err) => {
     console.log(err);
   });
@@ -34,6 +38,4 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "ecClient/build", "index.html"));
 });
 
-app.listen(process.env.PORT || 4000, () => {
-  console.log("backend server is running");
-});
+
