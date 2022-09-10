@@ -4,7 +4,7 @@ require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const STRIPE_PK = process.env.STRIPE_PUBLIC_KEY;
 
-router.post("/checkout", async (req, res) => {
+router.post("/", async (req, res) => {
   const cart = req.body;
 
   try {
