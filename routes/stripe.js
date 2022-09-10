@@ -4,7 +4,7 @@ require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const STRIPE_PK = process.env.STRIPE_PUBLIC_KEY;
 
-router.post("/", async (req, res) => {
+router.post("/checkout", async (req, res) => {
   const cart = req.body;
 
   try {
@@ -23,11 +23,12 @@ router.post("/", async (req, res) => {
       };
     });
 
+    // create checkout session
     const session = await stripe.checkout.sessions.create({
-      line_items: allProducts,
-      mode: "payment",
       success_url: `${process.env.REACT_APP_CLIENT_URL}/success`,
       cancel_url: process.env.REACT_APP_CLIENT_URL,
+      line_items: allProducts,
+      mode: "payment",
     });
 
     res.json({ url: session.url });
